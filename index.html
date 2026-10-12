@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Generate strong random passwords with a live strength meter."
+    />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <header class="card__header">
+        <h1>Password Generator</h1>
+        <p>Create strong, random passwords in your browser &mdash; nothing is sent anywhere.</p>
+      </header>
+
+      <div class="output">
+        <output id="password" class="output__value" aria-live="polite">Click generate</output>
+        <button type="button" id="copy" class="output__copy" aria-label="Copy password">
+          Copy
+        </button>
+      </div>
+
+      <div class="strength" aria-hidden="true">
+        <div class="strength__track">
+          <div class="strength__fill" id="strength-fill"></div>
+        </div>
+        <span class="strength__label" id="strength-label">—</span>
+      </div>
+
+      <form id="options">
+        <label class="length">
+          <span class="length__row">
+            <span>Length</span>
+            <output id="length-value">16</output>
+          </span>
+          <input id="length" type="range" min="4" max="64" value="16" />
+        </label>
+
+        <fieldset class="toggles">
+          <legend>Include</legend>
+          <label><input type="checkbox" id="lowercase" checked /> Lowercase <code>a-z</code></label>
+          <label><input type="checkbox" id="uppercase" checked /> Uppercase <code>A-Z</code></label>
+          <label><input type="checkbox" id="numbers" checked /> Numbers <code>0-9</code></label>
+          <label><input type="checkbox" id="symbols" checked /> Symbols <code>!@#</code></label>
+          <label><input type="checkbox" id="excludeAmbiguous" /> Exclude look-alikes <code>Il1O0o</code></label>
+        </fieldset>
+
+        <p class="error" id="error" role="alert" hidden></p>
+
+        <button type="submit" class="generate">Generate password</button>
+      </form>
+    </main>
+
+    <script type="module" src="src/ui.js"></script>
+  </body>
+</html>
